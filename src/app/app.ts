@@ -9,4 +9,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('carrito-angular');
+  saludo = "Hola mundo";
+
+  incrementar() {
+    this.saludo = "Hola " + this.saludo;
+  }
 }
