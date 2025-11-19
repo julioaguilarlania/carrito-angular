@@ -1,0 +1,30 @@
+@startuml
+group construcción [inyección de dependencias]
+activate App
+activate Productos
+Productos --[#4444FF]>> App : //provisto//
+activate ProductosService
+ProductosService --[#4444FF]>> Productos : //provisto//
+activate HttpClient
+HttpClient --[#4444FF]>> ProductosService : //provisto//
+end
+group ngOnInit
+Productos ->> ProductosService ++ : getProductos()
+ProductosService ->> HttpClient ++ : get(urlProductos)
+HttpClient ->> ProductosService --: response
+ProductosService ->> Productos --: return
+Productos -> Productos : listaProductos = return
+group opt [si rendered]
+Productos -> Productos : //update//
+end
+end
+group render
+App -> Productos : //render//
+group loop [p in listaProductos]
+activate FichaProducto
+Productos -> FichaProducto : input = p
+Productos -> FichaProducto : //render//
+end
+end
+
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+navegador -> index.html
+index.html -> main.ts
+main.ts -> main.ts : bootstrapApplication(appConfig)
+main.ts -> App: <<new>>
+activate App
+AngularDI --> App : //proveer dependencias//
+App -> App : //render(app.html)//
+App --> index.html : //render app-root//
+@enduml
