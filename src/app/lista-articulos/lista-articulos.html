@@ -1,0 +1,8 @@
+<h3>Productos </h3>
+<div>
+    <ul>
+    @for (p of listaProductos; track p) {
+        <li>{{ p.nombre}}, {{p.precio | currency }}</li>
+    }
+    </ul>
+</div>
