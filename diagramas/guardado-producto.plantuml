@@ -1,4 +1,9 @@
 @startuml Creacion Producto
+participant backend order 10 #88FF88
+participant Productos order 20
+participant Servicio order 15
+participant Formulario order 30
+participant Usuario order 40
 activate Productos
 activate Servicio
 activate backend
