@@ -1,5 +1,11 @@
 <h2>Productos</h2>
 
+@if (formularioVisible) {
+    <app-formulario-producto (guardado)="guardarProducto($event)" (cancelacion)="ocultarFormulario()"/>
+}
+
+<button (click)="mostrarFormulario()">Agregar producto</button>
+
 @for (p of listaProductos; track p) {
     <app-ficha-producto [producto]="p"></app-ficha-producto>
 }
