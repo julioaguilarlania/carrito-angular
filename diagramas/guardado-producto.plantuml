@@ -1,0 +1,24 @@
+@startuml Creacion Producto
+activate Productos
+activate Servicio
+activate backend
+Productos -> Formulario : visible
+activate Formulario
+actor Usuario
+Formulario <- Usuario : llenar 
+Formulario <- Usuario : button-guardar
+Formulario -> Productos : guardar
+deactivate Formulario
+activate Productos
+Productos -> Productos : guardarProducto(p)
+Productos ->> Servicio : crearProducto(p);
+Servicio ->> backend : POST producto
+alt guardado
+backend -> Servicio : CREATED
+Servicio ->> Productos : next()
+else error
+backend -> Servicio : BAD REQUEST
+Servicio ->> Productos : error()
+end
+deactivate Productos
+@enduml
