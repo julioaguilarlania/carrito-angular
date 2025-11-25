@@ -1,0 +1,20 @@
+<h2>Login</h2>
+@if (enEspera) {
+    <div class="espera"></div>
+}
+@if (hayError) {
+    <div class="error">{{ mensajeError }}</div>
+}
+<form (ngSubmit)="login()">
+    <p>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" [(ngModel)]="email">
+    </p>
+    <p>
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" id="password" [(ngModel)]="password">
+    </p>
+    <p>
+        <button type="submit" [disabled]="enEspera">Entrar</button>
+    </p>
+</form>
