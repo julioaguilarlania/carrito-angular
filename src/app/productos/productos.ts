@@ -5,10 +5,11 @@ import { ProductosService } from './productos-service';
 import { FormularioProducto } from './formulario-producto/formulario-producto';
 import { FormsModule } from '@angular/forms';
 import { NGXLogger } from 'ngx-logger';
+import { Carrito } from "../carrito/carrito";
 
 @Component({
   selector: 'app-productos',
-  imports: [FormsModule, FichaProducto, FormularioProducto],
+  imports: [FormsModule, FichaProducto, FormularioProducto, Carrito],
   templateUrl: './productos.html',
   styleUrl: './productos.scss',
 })

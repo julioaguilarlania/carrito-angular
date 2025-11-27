@@ -4,7 +4,8 @@
     <app-formulario-producto (guardado)="guardarProducto($event)" (cancelacion)="ocultarFormulario()"/>
 }
 
-<div>
+<div id="productos">
+<div id="busqueda">
     <input type="text" name="cadena" id="cadena" [(ngModel)]="cadenaBusqueda" (keydown.enter)="buscarProductos()">
     <button (click)="buscarProductos()">Buscar</button>
     <button (click)="cargarTodos()">Limpiar</button>
@@ -15,3 +16,5 @@
 @for (p of listaProductos; track p) {
     <app-ficha-producto [producto]="p"></app-ficha-producto>
 }
+</div>
+<div id="carrito"><app-carrito/></div>
