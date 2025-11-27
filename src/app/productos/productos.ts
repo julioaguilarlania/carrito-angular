@@ -3,21 +3,32 @@ import { FichaProducto } from "./ficha-producto/ficha-producto";
 import { Producto } from './producto.model';
 import { ProductosService } from './productos-service';
 import { FormularioProducto } from './formulario-producto/formulario-producto';
+import { FormsModule } from '@angular/forms';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-productos',
-  imports: [FichaProducto, FormularioProducto],
+  imports: [FormsModule, FichaProducto, FormularioProducto],
   templateUrl: './productos.html',
   styleUrl: './productos.scss',
 })
 export class Productos implements OnInit {
   listaProductos:Producto[] = [];
   formularioVisible = false;
+  cadenaBusqueda = "";
 
-  constructor(private productosServ: ProductosService) {  }
+  constructor(private productosServ: ProductosService,
+    private logger: NGXLogger
+  ) {  }
 
   ngOnInit(): void {
-    console.log("entrando a ngOnInit()");
+    this.logger.debug("entrando a ngOnInit()");
+    this.cargarTodos();
+    this.logger.debug("saliendo de ngOnInit()");
+  }
+
+  cargarTodos() {
+    this.logger.debug("cargarTodos()");
     this.productosServ.getProductos().subscribe(
       {
       next : lp => {
@@ -27,7 +38,19 @@ export class Productos implements OnInit {
       error: err => { console.error(err); }
       }
     );
-    console.log("saliendo de ngOnInit()");
+  }
+
+  buscarProductos() {
+    this.logger.debug("buscarProductos()");
+    this.productosServ.buscarProductos(this.cadenaBusqueda).subscribe(
+      {
+      next : lp => {
+        this.listaProductos = lp;
+        console.log( this.listaProductos.length + " productos recibidos");
+      },
+      error: err => { console.error(err); }
+      }
+    );
   }
 
   mostrarFormulario() {
@@ -39,6 +62,7 @@ export class Productos implements OnInit {
   }
 
   guardarProducto(prod: Producto) {
+    this.logger.debug("guardarProducto()");
     this.formularioVisible = false;
     // this.ocultarFormulario(); // Alternativa
     this.productosServ.crearProducto(prod)

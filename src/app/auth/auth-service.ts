@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
-import { AUTH_TOKEN_ITEM, LOGIN_PATH } from '../app.constantes';
+import { AUTH_TOKEN_ITEM, BACKEND_LOGIN_PATH } from '../app.constantes';
 import { Observable, tap } from 'rxjs';
 import { AuthResponse } from './login/auth.model';
 import { Router } from '@angular/router';
@@ -25,7 +25,7 @@ export class AuthService {
 
   logIn(email: string, password: string): Observable<AuthResponse> {
     this.logger.debug("log-in");
-    return this.http.post<AuthResponse>(environment.RUTA_SERVIDOR + LOGIN_PATH,
+    return this.http.post<AuthResponse>(environment.BACKEND_URL + BACKEND_LOGIN_PATH,
       {'usuario': email, 'password': password}
     )
     .pipe(tap(resp => {

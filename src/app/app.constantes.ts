@@ -1,3 +1,5 @@
 export const AUTH_TOKEN_ITEM = 'AUTH_TOKEN'
 export const USUARIO_ITEM = 'USER'
-export const LOGIN_PATH = '/auth'
+export const BACKEND_LOGIN_PATH = '/auth'
+export const BACKEND_PRODUCTOS_PATH = '/api/productos'
+export const BACKEND_PRODUCTOS_QUERY_PARAM = 'desc'

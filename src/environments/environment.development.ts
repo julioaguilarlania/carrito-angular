@@ -1,3 +1,3 @@
 export const environment = {
-    RUTA_SERVIDOR: 'http://localhost:8080'
+    BACKEND_URL: 'http://localhost:8080'
 };
