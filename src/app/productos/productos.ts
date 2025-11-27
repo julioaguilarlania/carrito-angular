@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FichaProducto } from "./ficha-producto/ficha-producto";
 import { Producto } from './producto.model';
-import { ProductosService } from '../productos-service';
-import { FormularioProducto } from '../formulario-producto/formulario-producto';
+import { ProductosService } from './productos-service';
+import { FormularioProducto } from './formulario-producto/formulario-producto';
 
 @Component({
   selector: 'app-productos',
