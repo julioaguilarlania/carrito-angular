@@ -1,4 +1,13 @@
-<h2>Encabezado general</h2>
-<a routerLink="/productos">Productos</a>
-<button (click)="logout()">Salir</button>
-<router-outlet/>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto">
+        <span class="fs-4">Carrito Fullstack</span>
+        </div>
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a routerLink="/home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/productos">Productos</a></li>
+            <li class="nav-item"><button (click)="logout()">Salir</button></li>
+        </ul>
+    </header>
+    <router-outlet/>
+</div>
