@@ -1,20 +1,32 @@
-<h2>Productos</h2>
+<div class="d-flex justify-content-between justify-content-lg-start">
+    <div class="d-flex align-items-left mb-4 mb-lg-4"><b>Productos</b></div>
+    <div class="d-flex flex-wrap ms-auto">
+    <form class="">
+        <input type="text" name="cadena" id="cadena" 
+        placeholder="Buscar..."
+        aria-label="Busqueda"
+        [(ngModel)]="cadenaBusqueda"
+        (keydown.enter)="buscarProductos()"
+        >
+    </form>
+    <div class="ms-5">
+        <button (click)="mostrarFormulario()" class="btn btn-dark">Agregar</button>
+    </div>
+    </div>
+</div>
 
 @if (formularioVisible) {
     <app-formulario-producto (guardado)="guardarProducto($event)" (cancelacion)="ocultarFormulario()"/>
 }
 
-<div id="productos">
-<div id="busqueda">
-    <input type="text" name="cadena" id="cadena" [(ngModel)]="cadenaBusqueda" (keydown.enter)="buscarProductos()">
-    <button (click)="buscarProductos()">Buscar</button>
-    <button (click)="cargarTodos()">Limpiar</button>
-</div>
-<div><button (click)="mostrarFormulario()">Agregar producto</button></div>
+<div class="container">
+    <div class="row">
+    <div id="productos" class=" col-9 col-md-3">
 
-
-@for (p of listaProductos; track p) {
-    <app-ficha-producto [producto]="p"></app-ficha-producto>
-}
+    @for (p of listaProductos; track p) {
+        <app-ficha-producto [producto]="p"></app-ficha-producto>
+    }
+    </div>
+    <div id="carrito" class="col"><app-carrito/></div>
+    </div>
 </div>
-<div id="carrito"><app-carrito/></div>
