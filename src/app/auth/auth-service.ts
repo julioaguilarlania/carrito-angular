@@ -30,7 +30,7 @@ export class AuthService {
     )
     .pipe(tap(resp => {
       if (resp.jwt) {
-        localStorage.setItem(AUTH_TOKEN_ITEM, resp.jwt);
+        sessionStorage.setItem(AUTH_TOKEN_ITEM, resp.jwt);
         this.autenticado = true;
       }
     }));
@@ -39,7 +39,7 @@ export class AuthService {
   logOut() {
     this.logger.debug("log-out");
     this.autenticado = false;
-    localStorage.removeItem(AUTH_TOKEN_ITEM);
+    sessionStorage.removeItem(AUTH_TOKEN_ITEM);
     this.router.navigateByUrl('/login');
   }
   
