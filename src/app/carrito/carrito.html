@@ -7,23 +7,23 @@
     <thead>
       <tr>
         <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
+        <th># </th>
+        <th class="precio">Precio</th>
       </tr>
     </thead>
     <tbody>
     @for (item of items; track item.idProducto) {
       <tr>
-        <td>{{ item.nombre }}</td>
-        <td>{{ item.cantidad }}</td>
-        <td>{{ item.precio | currency:'USD' }}</td>
+        <td class="nombre">{{ item.nombre }}</td>
+        <td>{{ item.cantidad }} </td>
+        <td class="precio">{{ item.precio | currency:'USD' }}</td>
       </tr>
     }
     </tbody>
     <tfoot>
       <tr>
         <td colspan="2">Total</td>
-        <td>{{ precioTotal | currency }}</td>
+        <td class="precio">{{ precioTotal | currency }}</td>
       </tr>
     </tfoot>
     </table>

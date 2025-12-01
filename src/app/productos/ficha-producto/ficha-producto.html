@@ -1,6 +1,9 @@
-<div class="producto">
-    <h4>{{ producto.nombre }}</h4>
+<div class="producto card">
+    <div class="card-body">
+    <h4 class="card-title">{{ producto.nombre }}</h4>
     <p>{{ producto.descripcion }}</p>
-    <div class="precio">{{ producto.precio | currency:'USD' }}</div>
-    <div class="accion"><button (click)="agregar(producto)">+</button></div>
+    <div class="accion">{{ producto.precio | currency:'USD' }} 
+        <button (click)="agregar(producto)" class="btn btn-outline-secondary">+</button>
+    </div>
+    </div>
 </div>
